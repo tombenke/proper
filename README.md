@@ -29,6 +29,25 @@ Fundamental concepts to model data:
 
 ## Installation
 
+### Install as an npm package
+
+Execute the following command:
+
+  npm install git+https://github.com/tombenke/proper.git
+
+or
+
+  npm install git+https://github.com/tombenke/proper.git#<tag>
+
+if you want to install a specific version, for example `v0.1.0` would look like this:
+
+  npm install git+https://github.com/tombenke/proper.git#v0.1.0
+
+Use the `-g` switch to install to the global modules repository, if you want to use the command line utilities as well.
+
+
+### install from source
+
 Just simply clone the repository, and add the folder to the PATH.
 
 The downloaded repository does not contain the packages required by the proper utility,
