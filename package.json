@@ -22,7 +22,7 @@
     "node": "> 0.4.11"
   },
   "bin": {
-    "proper": "./cli.js"
+    "proper": "./bin/cli.js"
   },
   "dependencies": {
     "js-yaml": "*",

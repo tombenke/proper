@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 /**
  * Property graph processing engine
  */
@@ -5,7 +6,7 @@
     var verbose = false;
     var fs = require('fs');
     var jsyaml = require( 'js-yaml' );
-    var engine = require('./processor.js');
+    var engine = require('../processor.js');
 
     /**
      * Setup the configuration for the graph processor engine
