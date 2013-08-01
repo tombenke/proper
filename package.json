@@ -3,13 +3,12 @@
     "version"         : "0.0.2",
     "description"     : "Property Manager utility",
     "keywords"        : ["yaml", "property-graph", "graphs"],
-    "homepage"        : "https://bitbucket.org/tombenke/proper",
+    "homepage"        : "https://github.com/tombenke/proper",
 
     "author"          : "Tamás Benke <tombenke@gmail.com>",
 
-    "bugs"            : { "url": "https://bitbucket.org/tombenke/proper/issues" },
-    "license"         : { "type": "MIT", "url": "https://bitbucket.org/tombenke/proper/LICENSE" },
-    "repository"      : { "type": "hg", "url": "ssh://hg@bitbucket.org/tombenke/proper" },
+    "license"         : { "type": "MIT", "url": "https://github.com/tombenke/proper/LICENSE" },
+    "repository"      : { "type": "git", "url": "https://github.com/tombenke/proper.git" },
 
     "main"            : "./processor.js",
 
