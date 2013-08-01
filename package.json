@@ -25,6 +25,7 @@
     "proper": "./bin/cli.js"
   },
   "dependencies": {
+    "commander": "*",
     "js-yaml": "*",
     "should": "*",
     "xml-mapping": ">= 1.1.0",

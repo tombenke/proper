@@ -7,25 +7,19 @@
     var fs = require('fs');
     var jsyaml = require( 'js-yaml' );
     var engine = require('../processor.js');
+    var program = require('commander');
+    program._name = 'proper';
+    var version = require(__dirname + '/../package.json').version;
 
     /**
-     * Setup the configuration for the graph processor engine
-     * @return {Object} The configuration object
+     * Read the config file
+     * @param  {string} fileName The name of the config file
+     * @return {Object}          The configuration object
      */
-    var getConfiguration = function () {
+    var readConfig = function( fileName ) {
+        console.log('Read configuration from ' + fileName);
         var pathSep = require('path').sep;
-        var inFileName = process.cwd() + pathSep;
-
-        if ( process.argv.length < 3 ) {
-            console.log('ERROR: Too few arguments!');
-            process.exit();
-        } else {
-            if ( process.argv[2][0] === pathSep ) {
-                inFileName = process.argv[2];
-            } else {
-                inFileName += process.argv[2];
-            }
-        }
+        var inFileName = process.cwd() + pathSep + fileName;
 
         console.log( 'input file: ', inFileName );
         var config = require( inFileName );
@@ -44,6 +38,16 @@
         return config;
     };
 
-    // Auto-start the engine
-    engine.run( getConfiguration() );
+    program
+        .version(version)
+        .usage('[options]')
+        .option('-c, --config <path>', 'set config path [./pconf.yml]')
+        .parse(process.argv);
+
+    if ( program.config && program.config !=="" ) {
+        // Auto-start the engine with the configuration
+        engine.run( readConfig(program.config) );
+    } else {
+        program.help();
+    }
 })();
