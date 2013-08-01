@@ -1,24 +1,33 @@
 {
-    "name"            : "proper",
-    "version"         : "0.0.2",
-    "description"     : "Property Manager utility",
-    "keywords"        : ["yaml", "property-graph", "graphs"],
-    "homepage"        : "https://github.com/tombenke/proper",
-
-    "author"          : "Tamás Benke <tombenke@gmail.com>",
-
-    "license"         : { "type": "MIT", "url": "https://github.com/tombenke/proper/LICENSE" },
-    "repository"      : { "type": "git", "url": "https://github.com/tombenke/proper.git" },
-
-    "main"            : "./processor.js",
-
-    "engines"         : { "node": "> 0.4.11" },
-    "bin"             : { "proper": "./cli.js" },
-
-    "dependencies"    : {
-      "js-yaml": "*",
-      "should": "*",
-      "xml-mapping": ">= 1.1.0",
-      "dot": "*"
-    }
+  "name": "proper",
+  "version": "0.1.0",
+  "description": "Property Manager utility",
+  "keywords": [
+    "yaml",
+    "property-graph",
+    "graphs"
+  ],
+  "homepage": "https://github.com/tombenke/proper",
+  "author": "Tamás Benke <tombenke@gmail.com>",
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/tombenke/proper/LICENSE"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tombenke/proper.git"
+  },
+  "main": "./processor.js",
+  "engines": {
+    "node": "> 0.4.11"
+  },
+  "bin": {
+    "proper": "./cli.js"
+  },
+  "dependencies": {
+    "js-yaml": "*",
+    "should": "*",
+    "xml-mapping": ">= 1.1.0",
+    "dot": "*"
+  }
 }
