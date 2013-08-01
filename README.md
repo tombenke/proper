@@ -79,3 +79,4 @@ The results are written to the standard output:
 ## License
 
 View the LICENSE file (MIT).
+
