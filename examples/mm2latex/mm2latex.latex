@@ -1,0 +1,28 @@
+\documentclass[12pt]{book}
+\begin{document}
+\title Book Title
+
+\chapter{This is the first chapter of the book}
+\section{This is the first section of chapter 1}
+This is a simple apragraph
+
+This is an other paragraph
+
+This is a bullet list
+
+\begin{itemize}
+\item item 1
+\item item 2
+\item item 3
+\end{itemize}
+This is a numbered list
+
+\begin{enumerate}
+\item item 1
+\item item 2
+\item item 3
+\end{enumerate}
+\section{This is the second section}
+\chapter{This is the second chapter of the book}
+
+\end{document}

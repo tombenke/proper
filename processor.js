@@ -1,11 +1,19 @@
 /**
  * Property graph processing engine
+ *
+ * To use this processor engine, load the module, and call the `run()` function
+ * with the appropriate configuration setting like the following sample shows:
+ *    var engine = require('proper');
+ *    engine.run( getConfiguration() );
+ *    
  */
 (function() {
     var verbose = false;
     var engine = this;
     var fs = require('fs');
-    var jsyaml = require( 'js-yaml' );
+    var jsyaml = require('js-yaml');
+    var mmconv = require(__dirname + '/mmconv.js');
+    var mmToLatex = require(__dirname + '/mmToLatex.js');
 
     /**
      * Generic reader plugin for yaml format PGL files.
@@ -195,6 +203,36 @@
         return graphFile;
     };
 
+    this.freemindReader = function (context) {
+        console.log('freemindReader: ', context);
+
+        var graphFileName = context.fileName;
+        // Load the YAML parser module
+
+        // Load the 'should' module for validation
+        require( 'should' );
+
+        // Load the freemind format graph file
+        var graphFile = mmconv.mmToJson( graphFileName, true );
+
+        // TODO: Do validation
+        // graphFile.should.be.a( 'object' );
+
+        // TODO: Merge graphFile data with this.graph
+        for ( var property in graphFile ) {
+            if ( graphFile.hasOwnProperty(property) ) {
+                this.graph[property] = graphFile[property];
+            }
+        }
+
+        verbose && console.log(JSON.stringify(this, null, "    "));
+        return this;
+    };
+
+    this.latexWriter = function (context) {
+        return mmToLatex.latexWriter(this.graph.map, context.fileName);
+    };
+
     /**
      * Definition of processors to select one, based om `fileType`
      * @type {Object}
@@ -202,14 +240,16 @@
     var processors = {
         'preprocessor' : {
             '/application/yaml' : this.pglYamlReader,
-            '/application/pgl-yaml' : this.pglYamlReader
+            '/application/pgl-yaml' : this.pglYamlReader,
+            '/application/freemind' : this.freemindReader
         },
         'processor' : {
         },
         'postprocessor' : {
             '/application/olado-dot' : this.oladoTemplateWriter,
             '/application/pgl-dot' : this.pglDotWriter,
-            '/application/pgl-markdown' : this.pglMdWriter
+            '/application/pgl-markdown' : this.pglMdWriter,
+            '/application/x-latex' : this.latexWriter
         }
     };
 
@@ -245,4 +285,5 @@
                 [config.processors, 'processor'] ),  // Run processors
             [config.postprocessors, 'postprocessor'] );  // Run postprocessors
     };
+
 })();

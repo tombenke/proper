@@ -110,6 +110,32 @@ function traverseTree( node, entryFunction, leaveFunction ) {
     leaveFunction && leaveFunction( node );
 }
 
+function traverseChildrenCtx( node, ctx ) {
+    var siblingCtx = {
+        beginChildren : ctx.beginChildren,
+        endChildren : ctx.endChildren,
+        entryFunction : ctx.entryFunction,
+        leaveFunction : ctx.leaveFunction
+    };
+
+    ctx.beginChildren(node, siblingCtx);
+    if( isArray( node ) ) {
+        node.forEach( function( childNode ) {
+            traverseTreeCtx( childNode, siblingCtx ) } );
+    } else {
+        traverseTreeCtx( node, siblingCtx );
+    }
+    ctx.endChildren(node, siblingCtx);
+}
+
+function traverseTreeCtx( node, ctx ) {
+    var visitChildren = ctx.entryFunction && ctx.entryFunction( node, ctx );
+    if( node.node && visitChildren ) {
+        traverseChildrenCtx( node.node, ctx );
+    }
+    ctx.leaveFunction && ctx.leaveFunction( node, ctx );
+}
+
 function encode( text ) {
     var resultText = new String(text);
     return resultText.replace(/&/g,"&amp;").replace(/"/g,"&apos;");
@@ -212,5 +238,8 @@ exports.mapChildren = mapChildren;
 exports.mapTree = mapTree;
 exports.traverseChildren = traverseChildren;
 exports.traverseTree = traverseTree;
+exports.traverseChildrenCtx = traverseChildrenCtx;
+exports.traverseTreeCtx = traverseTreeCtx;
 exports.jsonToMm = jsonToMm;
 exports.mmToJson = mmToJson;
+exports.isArray = isArray;
