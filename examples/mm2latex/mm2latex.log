@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=latex 2013.10.4)  12 OCT 2013 07:25
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=latex 2013.10.4)  13 OCT 2013 08:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -52,18 +52,18 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 14.
- [3] [4
-
-]
+ [3] [4]
 Chapter 2.
-[5] (./mm2latex.aux) ) 
-Here is how much of TeX's memory you used:
- 253 strings out of 495045
- 2822 string characters out of 3181339
- 48481 words of memory out of 3000000
- 3518 multiletter control sequences out of 15000+200000
- 5759 words of font info for 21 fonts, out of 3000000 for 9000
- 14 hyphenation exceptions out of 8191
- 22i,4n,19p,155b,143s stack positions out of 5000i,500n,10000p,200000b,50000s
+[5
 
-Output written on mm2latex.dvi (5 pages, 1392 bytes).
+] (./mm2latex.aux) ) 
+Here is how much of TeX's memory you used:
+ 254 strings out of 495045
+ 2837 string characters out of 3181339
+ 48481 words of memory out of 3000000
+ 3519 multiletter control sequences out of 15000+200000
+ 6066 words of font info for 22 fonts, out of 3000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 22i,4n,19p,155b,239s stack positions out of 5000i,500n,10000p,200000b,50000s
+
+Output written on mm2latex.dvi (5 pages, 1824 bytes).

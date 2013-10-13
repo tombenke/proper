@@ -23,6 +23,26 @@ This is a numbered list
 \item item 3
 \end{enumerate}
 \section{This is the second section}
+This is a bullet list
+
+\begin{itemize}
+\item item 1
+
+This is a sub-bullet list with a simple item at the beginning
+
+\begin{itemize}
+\item item 1
+\item item 2
+\item item 3
+\end{itemize}
+\item item 2
+\begin{enumerate}
+\item item 1
+\item item 2
+\item item 3
+\end{enumerate}
+\item item 3
+\end{itemize}
 \chapter{This is the second chapter of the book}
 
 \end{document}
