@@ -204,7 +204,6 @@
     };
 
     this.freemindReader = function (context) {
-        console.log('freemindReader: ', context);
 
         var graphFileName = context.fileName;
         // Load the YAML parser module
@@ -213,7 +212,7 @@
         require( 'should' );
 
         // Load the freemind format graph file
-        var graphFile = mmconv.mmToJson( graphFileName, true );
+        var graphFile = mmconv.mmToJson( graphFileName, false );
 
         // TODO: Do validation
         // graphFile.should.be.a( 'object' );

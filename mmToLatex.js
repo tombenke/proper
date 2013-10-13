@@ -12,8 +12,9 @@ var mapOwnProperties = function(obj, func) {
 
 var startNode = function (node, fileName, siblingCtx) {
     // fs.appendFileSync(fileName, '\\begin{itemize}\n');
-    console.log(siblingCtx);
+    // console.log(siblingCtx);
     if( node.icon ) {
+        console.log(node.icon);
         mapOwnProperties(node.icon, function(icon) {
             if(icon === 'full-1') {
                 fs.appendFileSync(fileName, '\\chapter{' + node.TEXT + '}\n');
@@ -27,6 +28,16 @@ var startNode = function (node, fileName, siblingCtx) {
             } else if(icon === 'full-4') {
                 fs.appendFileSync(fileName, '\\subsubsection{' + node.TEXT + '}\n');
                 return true;
+            } else if(icon === 'full-5') {
+                fs.appendFileSync(fileName, '\\subsubsubsection{' + node.TEXT + '}\n');
+                return true;
+            } else if(icon === 'licq') {
+                fs.appendFileSync(fileName,
+                    '\\begin{figure}[p]' +
+                    '\\includegraphics[width=\\textwidth,height=!]{' + node.LINK + '}' +
+                    '\\caption{' + node.TEXT + ' \\label{firstFig}}' +
+                    '\\end{figure}\n\n' );
+                return true;
             } else if(icon === 'forward') {
                 if( siblingCtx.itemize ) {
                 } else {
@@ -34,7 +45,7 @@ var startNode = function (node, fileName, siblingCtx) {
                     fs.appendFileSync(fileName, '\\begin{itemize}\n');
                 }
                 fs.appendFileSync(fileName, '\\item ');
-                fs.appendFileSync(fileName, node.TEXT + '\n');
+                fs.appendFileSync(fileName, node.TEXT + '\n\n');
                 return true;
             } else if(icon === 'up') {
                 if( siblingCtx.enumerate ) {
@@ -43,7 +54,16 @@ var startNode = function (node, fileName, siblingCtx) {
                     fs.appendFileSync(fileName, '\\begin{enumerate}\n');
                 }
                 fs.appendFileSync(fileName, '\\item ');
-                fs.appendFileSync(fileName, node.TEXT + '\n');
+                fs.appendFileSync(fileName, node.TEXT + '\n\n');
+                return true;
+            } else if(icon === 'down') {
+                if( siblingCtx.description ) {
+                } else {
+                    siblingCtx.description = true;
+                    fs.appendFileSync(fileName, '\\begin{description}\n');
+                }
+                fs.appendFileSync(fileName, '\\item[');
+                fs.appendFileSync(fileName, node.TEXT + '] \n\n');
                 return true;
             }
         });
@@ -54,22 +74,25 @@ var startNode = function (node, fileName, siblingCtx) {
 };
 
 var endNode = function (node, fileName) {
-    // fs.appendFileSync(fileName, '\\end{itemize}\n');
 };
 
 var beginChildren = function (node, fileName, siblingCtx) {
-    console.log('beginChildren');
+    // console.log('beginChildren');
     siblingCtx.itemize = false;
     siblingCtx.enumerate = false;
+    siblingCtx.description = false;
 };
 
 var endChildren = function (node, fileName, siblingCtx) {
-    console.log('endChildren');
+    // console.log('endChildren');
     if( siblingCtx.itemize ) {
         fs.appendFileSync(fileName, '\\end{itemize}\n');
     }
     if( siblingCtx.enumerate ) {
         fs.appendFileSync(fileName, '\\end{enumerate}\n');
+    }
+    if( siblingCtx.description ) {
+        fs.appendFileSync(fileName, '\\end{description}\n');
     }
 };
 
@@ -77,7 +100,9 @@ exports.latexWriter = function (map, fileName) {
     // console.log('latexWriter: ', map, fileName);
 
     fs.writeFileSync(fileName,
-        '\\documentclass[12pt]{book}\n\\begin{document}\n\\title ');
+        '\\documentclass[12pt]{book}\n' +
+        '\\usepackage{graphicx}\n' +
+        '\\begin{document}\n\\title ');
 
     mmconv.traverseTreeCtx( map.node, { 
             beginChildren : function(node,ctx) { return beginChildren(node, fileName, ctx); },
