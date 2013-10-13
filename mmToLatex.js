@@ -4,19 +4,19 @@ var fs = require('fs');
 var mapOwnProperties = function(obj, func) {
     for (var property in obj) {
         if (obj.hasOwnProperty(property)) {
-            // console.log('mapOwnProperty obj[' + property + '] : ' + obj[property]);
             func(obj[property]);
         }
     }
 };
 
 var startNode = function (node, fileName, siblingCtx) {
-    // fs.appendFileSync(fileName, '\\begin{itemize}\n');
-    // console.log(siblingCtx);
+
     if( node.icon ) {
-        console.log(node.icon);
+        // console.log(node.icon);
         mapOwnProperties(node.icon, function(icon) {
-            if(icon === 'full-1') {
+            if(icon === 'closed') {
+                // Skip this item
+            } else if(icon === 'full-1') {
                 fs.appendFileSync(fileName, '\\chapter{' + node.TEXT + '}\n');
                 return true;
             } else if(icon === 'full-2') {
@@ -32,10 +32,19 @@ var startNode = function (node, fileName, siblingCtx) {
                 fs.appendFileSync(fileName, '\\subsubsubsection{' + node.TEXT + '}\n');
                 return true;
             } else if(icon === 'licq') {
+                var re = /^\{(.*)\}{1}(.*){1}$/;
+                var result = node.TEXT.match(re);
+                var graphicsFile = node.LINK || 'undefined.eps';
+                var captionText = '';
+                var label = '';
+                if( result !== null && result.length >= 3) {
+                    captionText = result[2];
+                    label = result[1];                    
+                }
                 fs.appendFileSync(fileName,
-                    '\\begin{figure}[p]' +
-                    '\\includegraphics[width=\\textwidth,height=!]{' + node.LINK + '}' +
-                    '\\caption{' + node.TEXT + ' \\label{firstFig}}' +
+                    '\\begin{figure}[h]' +
+                    '\\includegraphics[width=\\textwidth,height=!]{' + graphicsFile + '}' +
+                    '\\caption{' + captionText + '\\label{' + label + '}}' +
                     '\\end{figure}\n\n' );
                 return true;
             } else if(icon === 'forward') {
@@ -77,14 +86,12 @@ var endNode = function (node, fileName) {
 };
 
 var beginChildren = function (node, fileName, siblingCtx) {
-    // console.log('beginChildren');
     siblingCtx.itemize = false;
     siblingCtx.enumerate = false;
     siblingCtx.description = false;
 };
 
 var endChildren = function (node, fileName, siblingCtx) {
-    // console.log('endChildren');
     if( siblingCtx.itemize ) {
         fs.appendFileSync(fileName, '\\end{itemize}\n');
     }
@@ -97,12 +104,11 @@ var endChildren = function (node, fileName, siblingCtx) {
 };
 
 exports.latexWriter = function (map, fileName) {
-    // console.log('latexWriter: ', map, fileName);
 
     fs.writeFileSync(fileName,
         '\\documentclass[12pt]{book}\n' +
         '\\usepackage{graphicx}\n' +
-        '\\begin{document}\n\\title ');
+        '\\begin{document}\n');
 
     mmconv.traverseTreeCtx( map.node, { 
             beginChildren : function(node,ctx) { return beginChildren(node, fileName, ctx); },

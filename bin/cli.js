@@ -17,11 +17,10 @@
      * @return {Object}          The configuration object
      */
     var readConfig = function( fileName ) {
-        console.log('Read configuration from ' + fileName);
+        // console.log('Read configuration from ' + fileName);
         var pathSep = require('path').sep;
         var inFileName = process.cwd() + pathSep + fileName;
 
-        console.log( 'input file: ', inFileName );
         var config = require( inFileName );
 
         // TODO: validate config

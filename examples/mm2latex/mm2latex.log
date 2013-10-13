@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=latex 2013.10.4)  13 OCT 2013 12:02
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=latex 2013.10.4)  13 OCT 2013 18:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -63,32 +63,69 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 3.
 LaTeX Font Info:    ... okay on input line 3.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 3.
 LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <14.4> on input line 10.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 10.
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no ¡ in font cmr12!
 [1
+
 
 ] [2
 
 ]
 Chapter 1.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 15.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 21.
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 15.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 21.
 File: firstFig.eps Graphic file (type eps)
  <firstFig.eps>
-[3] [4] [5] [6
 
-]
+LaTeX Warning: Float too large for page by 43.4988pt on input line 38.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: firstFig.eps Graphic file (type eps)
+<firstFig.eps>
+
+LaTeX Warning: Float too large for page by 43.4988pt on input line 40.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: firstFig.eps Graphic file (type eps)
+<firstFig.eps>
+
+LaTeX Warning: Float too large for page by 43.4988pt on input line 42.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: firstFig.eps Graphic file (type eps)
+<firstFig.eps>
+
+LaTeX Warning: Float too large for page by 43.4988pt on input line 44.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[3] [4] [5] [6] [7] [8]
 Chapter 2.
-[7] (./mm2latex.aux) ) 
-Here is how much of TeX's memory you used:
- 566 strings out of 495045
- 6819 string characters out of 3181339
- 54976 words of memory out of 3000000
- 3810 multiletter control sequences out of 15000+200000
- 6066 words of font info for 22 fonts, out of 3000000 for 9000
- 14 hyphenation exceptions out of 8191
- 25i,4n,19p,203b,262s stack positions out of 5000i,500n,10000p,200000b,50000s
+[9
 
-Output written on mm2latex.dvi (7 pages, 2532 bytes).
+] (./mm2latex.aux) ) 
+Here is how much of TeX's memory you used:
+ 576 strings out of 495045
+ 6943 string characters out of 3181339
+ 55976 words of memory out of 3000000
+ 3819 multiletter control sequences out of 15000+200000
+ 7278 words of font info for 26 fonts, out of 3000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 25i,6n,19p,204b,246s stack positions out of 5000i,500n,10000p,200000b,50000s
+
+Output written on mm2latex.dvi (9 pages, 3324 bytes).

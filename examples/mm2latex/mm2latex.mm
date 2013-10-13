@@ -1,6 +1,14 @@
 <map version="0.9.0">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
-<node CREATED="1381504069846" ID="ID_386900551" MODIFIED="1381504105027" TEXT="Book Title">
+<node CREATED="1381504069846" ID="ID_386900551" MODIFIED="1381681047859" TEXT="mm2latex sample">
+<icon BUILTIN="closed"/>
+<node CREATED="1381680665033" ID="ID_1603064887" MODIFIED="1381680673141" POSITION="right" TEXT="meta">
+<icon BUILTIN="attach"/>
+<node CREATED="1381680675079" ID="ID_416023418" MODIFIED="1381680718360" TEXT="\title{mm2latex Sample Document}"/>
+<node CREATED="1381680678007" ID="ID_809208612" MODIFIED="1381681453938" TEXT="\author{Tamas Benke}"/>
+<node CREATED="1381680735815" ID="ID_157861003" MODIFIED="1381680744583" TEXT="\date{2013-10-13}"/>
+<node CREATED="1381680732839" ID="ID_539169981" MODIFIED="1381680735224" TEXT="\maketitle"/>
+</node>
 <node CREATED="1381504089112" ID="ID_298651059" MODIFIED="1381519741943" POSITION="right" TEXT="This is the first chapter of the book">
 <icon BUILTIN="full-1"/>
 <node CREATED="1381504125544" ID="ID_1704367194" MODIFIED="1381519764085" TEXT="This is the first section of chapter 1">
@@ -29,7 +37,16 @@
 <icon BUILTIN="up"/>
 </node>
 </node>
-<node CREATED="1381658059529" ID="ID_1544823846" LINK="firstFig.eps" MODIFIED="1381658087079" TEXT="This is a figure">
+<node CREATED="1381658059529" ID="ID_1544823846" LINK="firstFig.eps" MODIFIED="1381674687664" TEXT="{fig1}This is a figure">
+<icon BUILTIN="licq"/>
+</node>
+<node CREATED="1381658059529" ID="ID_489470066" LINK="firstFig.eps" MODIFIED="1381674690352" TEXT="{fig2}This is an other figure">
+<icon BUILTIN="licq"/>
+</node>
+<node CREATED="1381658059529" ID="ID_603149355" LINK="firstFig.eps" MODIFIED="1381674698237" TEXT="{third}This is a third figure">
+<icon BUILTIN="licq"/>
+</node>
+<node CREATED="1381658059529" ID="ID_970966937" LINK="firstFig.eps" MODIFIED="1381674707087" TEXT="{fourthFig}This is a fourth figure">
 <icon BUILTIN="licq"/>
 </node>
 </node>

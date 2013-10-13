@@ -260,7 +260,7 @@
     var runProcessors = function(processingQueue, phase) {
         var that = this;
 
-        console.log('phase is: ' + phase, processors);
+        verbose && console.log('phase is: ' + phase, processors);
         processingQueue.forEach(function(context) {
             var processor = processors[phase][context.fileType];
 
