@@ -1,5 +1,6 @@
 var mmconv = require(__dirname + '/mmconv.js');
 var fs = require('fs');
+var path = require('path');
 
 var mapOwnProperties = function(obj, func) {
     for (var property in obj) {
@@ -16,6 +17,10 @@ var startNode = function (node, fileName, siblingCtx) {
         mapOwnProperties(node.icon, function(icon) {
             if(icon === 'closed') {
                 // Skip this item
+            } else if(icon === 'attach') {
+                // Include file
+                fs.appendFileSync(fileName, fs.readFileSync(path.resolve(node.TEXT)));
+                return true;
             } else if(icon === 'full-1') {
                 fs.appendFileSync(fileName, '\\chapter{' + node.TEXT + '}\n');
                 return true;
@@ -103,12 +108,15 @@ var endChildren = function (node, fileName, siblingCtx) {
     }
 };
 
-exports.latexWriter = function (map, fileName) {
+exports.latexWriter = function (map, fileName, wrapContent) {
 
-    fs.writeFileSync(fileName,
-        '\\documentclass[12pt]{book}\n' +
-        '\\usepackage{graphicx}\n' +
-        '\\begin{document}\n');
+    fs.writeFileSync(fileName,'');
+
+    // fs.writeFileSync(fileName,
+    //     '\\documentclass[12pt]{book}\n' +
+    //     '\\usepackage[utf8]{inputenc}\n' +
+    //     '\\usepackage{graphicx}\n' +
+    //     '\\begin{document}\n');
 
     mmconv.traverseTreeCtx( map.node, { 
             beginChildren : function(node,ctx) { return beginChildren(node, fileName, ctx); },
@@ -117,5 +125,5 @@ exports.latexWriter = function (map, fileName) {
             leaveFunction : function(node, ctx) { return endNode(node, fileName, ctx); }
         });
 
-    fs.appendFileSync(fileName, '\n\\end{document}\n');
+    // fs.appendFileSync(fileName, '\n\\end{document}\n');
 };

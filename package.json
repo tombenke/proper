@@ -25,10 +25,10 @@
     "proper": "./bin/cli.js"
   },
   "dependencies": {
-    "commander": "*",
-    "js-yaml": "*",
-    "should": "*",
+    "commander": "2.0.0",
+    "js-yaml": "2.0.5",
+    "should": "1.2.2",
     "xml-mapping": ">= 1.1.0",
-    "dot": "*"
+    "dot": "1.0.1"
   }
 }
